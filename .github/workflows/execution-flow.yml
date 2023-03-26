@@ -13,9 +13,10 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: src
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache.outputs.cache.hit != 'true'
         run: npm ci
       - name: Lint code
         run: npm run lint
@@ -28,9 +29,10 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: src
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache.outputs.cache.hit != 'true'
         run: npm ci
       - name: Test code
         id: test-check
@@ -48,12 +50,13 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Cache dependencies
-        #id: cache
+        id: cache
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: src
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache.outputs.cache.hit != 'true'
         run: npm ci
       - name: Build website
         id: build-website
@@ -83,7 +86,7 @@ jobs:
       - name: report job
         run: |
           echo "display something"
-          echo "${{ github }}"
+          echo "${{ toJSONgithub }}"
       
            
 
