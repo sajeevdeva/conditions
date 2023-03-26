@@ -86,7 +86,6 @@ jobs:
       - name: report job
         run: |
           echo "display something"
-          echo "${{ github }}"
       
            
 
