@@ -79,6 +79,7 @@ jobs:
     needs: [lint, test, build]
     if: failure()
     runs-on: ubuntu-latest
+    steps:
       - name: report job
         run: |
           echo "display something"
