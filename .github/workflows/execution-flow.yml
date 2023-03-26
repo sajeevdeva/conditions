@@ -79,9 +79,10 @@ jobs:
     needs: [lint, test, build]
     if: failure()
     runs-on: ubuntu-latest
-  - name: report job
-    run: |
-      echo "display something"
-      echo "${{ github }}"
+      - name: report job
+        run: |
+          echo "display something"
+          echo "${{ github }}"
+      
            
 
