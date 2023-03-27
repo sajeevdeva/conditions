@@ -4,7 +4,7 @@ jobs:
   build:
     strategy:
      matrix:
-      node: [12,13,14]
+      node: [12, 13, 14]
       Operating-system: [ubuntu-latest, windows-latest]
     runs-on: ${{ metrix.operating-system }}
     steps: 
