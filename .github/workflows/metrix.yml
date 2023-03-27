@@ -6,14 +6,14 @@ jobs:
       matrix:
         node-version: [12, 13, 14]
         operating-system: [ubuntu-latest, windows-latest]
-    runs-on: "${{ metrix.operating-system }}"
+    runs-on: "${{ matrix.operating-system }}"
     steps: 
       - name: get code
         uses: actions/checkout@v3
       - name: Install nodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node-version: ${{ matrix.node-version }}
       - name: install dependencies
         run: npm ci
       - name: build project 
